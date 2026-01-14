@@ -1,0 +1,25 @@
+name: Container calculator example
+description: calculator to text two number docker example
+
+inputs:
+  num1:
+    required: true
+    description: first number
+    default: 0
+  
+  num2:
+    required: true
+    description: second number
+    default: 0
+  
+outputs:
+  result:
+    description: output is the sum of both input number
+
+runs:
+  using: 'docker'
+  image: "DockerFile"
+  args:
+    - ${{inputs.num1}}
+    - ${{inputs.num2}}
+    

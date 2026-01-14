@@ -1,0 +1,20 @@
+name: container
+
+on: 
+    push: 
+    workflow_dispatch: 
+
+jobs:
+    test_docker_action:
+        name: job to text our docker test_docker_action
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - run: chmod +x run.sh
+            - uses: ./
+              id: mainStep
+              with:
+                  num1: 400
+                  num2: 959
+            - run: "result is ${{steps.mainStep.outputs.result}}"
+            - run: cat $GITHUB_WORKSPACE/containerOutputFile.txt
