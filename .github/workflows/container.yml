@@ -16,5 +16,7 @@ jobs:
               with:
                   num1: 400
                   num2: 959
-            - run: "result is ${{steps.mainStep.outputs.result}}"
+            - run: |
+                result="${{steps.mainStep.outputs.result}}"
+                "result is $result"
             - run: cat $GITHUB_WORKSPACE/containerOutputFile.txt
